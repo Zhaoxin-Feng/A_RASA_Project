@@ -1,0 +1,31 @@
+version: "3.0"
+
+stories:
+
+- story: 打招呼
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: 设置计划
+  steps:
+  - intent: inform
+  - action: action_set_affair
+  - action: utter_option
+
+- story: 再一次设置计划
+  steps:
+  - intent: affirm
+  - action: utter_greet
+
+- story: 再见
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: 查询信息
+  steps:
+  - intent: query_affair
+  - action: action_query_affair
+  - action: utter_option
+

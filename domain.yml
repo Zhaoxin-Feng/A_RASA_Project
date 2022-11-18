@@ -1,0 +1,52 @@
+version: "3.0"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - query_affair
+  - inform
+
+entities:
+  - weekday
+  - affair
+
+slots:
+  weekday:
+    type: categorical
+    influence_conversation: false
+    values:
+      - 周一
+      - 周二
+      - 周三
+      - 周四
+      - 周五
+      - 周六
+      - 周日
+    mappings:
+    - type: from_entity
+      entity: weekday
+  affair:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: affair
+
+responses:
+  utter_greet:
+    - text: 你好呀，输入计划示例：周一的计划是写语文作业。
+  utter_goodbye:
+    - text: 好的，若无业务需求，那就下次再见。
+  utter_option:
+    - text: 您可以输入'查询'或者'继续设置计划'或者'再见'。
+
+actions:
+  - action_set_affair
+  - action_query_affair
+  - utter_goodbye
+  - utter_greet
+  - utter_option
